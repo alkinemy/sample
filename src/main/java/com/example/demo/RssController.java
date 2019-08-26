@@ -12,11 +12,14 @@ public class RssController {
 	@Autowired
 	private RssService rssService;
 
+
+	//curl -XGET localhost:8080/get/naver
 	@GetMapping("/get/naver")
 	public String get() {
 		return rssService.getFeed();
 	}
 
+	//curl -XPOST localhost:8080/rss -H "Content-Type: application/json" -d '{ "id": "naver" }'
 	@PostMapping("/rss")
 	public String post(@RequestBody RssDto rssDto) {
 		if (rssDto.getId() == null || rssDto.getId().isBlank()) {
